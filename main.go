@@ -1,5 +1,9 @@
 package main
 
-func main(){
-	fmt.Println("Aslan is good")
+import (
+	"Study/feature_postgress/simple_connection"
+)
+
+func main() {
+	simple_connection.CheckConnection()
 }
