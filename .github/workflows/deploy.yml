@@ -19,7 +19,8 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: docker buildx build --load -t ${{ secrets.DOCKER_USERNAME }}/my-app:latest .
+        run: |
+          docker buildx build --load -t ${{ secrets.DOCKER_USERNAME }}/my-app:latest $(pwd)
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/my-app:latest
