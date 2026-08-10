@@ -1,11 +1,16 @@
 include .env
 export
-
+.PHONY: service-run
 service-run:
-export connection="postgres://postgres:1234@localhost:5432/postgres" && \
-go run main.go
 
+	@go run main.go
 
+ service-deploy:
+	docker compose up -d  application 
+	#нужно писать название сервиса а не контейнера
+
+service-undeploy:
+	docker compose down 
 
 
 migrate-up:

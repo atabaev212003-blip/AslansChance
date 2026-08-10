@@ -1,0 +1,25 @@
+services:
+  app:
+    build: .
+    container_name: go-app
+    ports:
+      - "5050:5050"
+    depends_on:
+      - db
+    environment:
+      - CONNECTION=postgres://postgres:1234@db:5432/postgres?sslmode=disable
+
+  db:
+    image: postgres:15
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
