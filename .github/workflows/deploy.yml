@@ -19,9 +19,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: |
-          docker buildx create --use
-          docker buildx build --load -t ${{ secrets.DOCKER_USERNAME }}/my-app:latest .
+        run: docker build --platform linux/amd64 -t ${{ secrets.DOCKER_USERNAME }}/my-app:latest .
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/my-app:latest
