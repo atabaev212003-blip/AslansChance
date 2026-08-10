@@ -19,15 +19,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: |
-          echo "=== Current directory ==="
-          pwd
-          echo "=== Files in current directory ==="
-          ls -la
-          echo "=== Docker version ==="
-          docker version
-          echo "=== Building image ==="
-          docker build --platform linux/amd64 -t ${{ secrets.DOCKER_USERNAME }}/my-app:latest .
+        run: docker buildx build --load -t ${{ secrets.DOCKER_USERNAME }}/my-app:latest .
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/my-app:latest
