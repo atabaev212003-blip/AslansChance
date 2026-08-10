@@ -20,7 +20,7 @@ jobs:
 # Войти в Docker Hub.
  # Использует секреты (логин и пароль), которые ты сохранил в GitHub → Settings → Secrets.
       - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/my-app:latest .
+        run: docker buildx build -t ${{ secrets.DOCKER_USERNAME }}/my-app:latest --load .
  # Собирает Docker-образ и даёт ему имя: <твой_логин>/my-app:latest.
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/my-app:latest . 
