@@ -10,11 +10,16 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
-
+        uses: actions/checkout@v4     # Готовый скрипт от GitHub, который скачивает код вашего репозитория внутрь виртуальной машины
+         
       - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
+
+        uses: docker/login-action@v3   # Готовый официальный скрипт от Docker для прохождения авторизации
+      
+       
+       
+        with:  # Передача параметров (логина и пароля) для успешного входа
+       
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
