@@ -9,7 +9,7 @@ import (
 func StartHttpServer() error {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("обработка запроса на патерне /ping")
-		w.Write([]byte("Hello, Docker!"))
+		w.Write([]byte("Асхаб ма саг ву"))
 
 	})
 
