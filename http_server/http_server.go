@@ -7,7 +7,7 @@ import (
 )
 
 func StartHttpServer() error {
-	http.HandleFunc("/ping", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("обработка запроса на патерне /ping")
 		w.Write([]byte("Hello, Docker!"))
 
